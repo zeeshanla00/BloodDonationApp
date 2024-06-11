@@ -1,0 +1,145 @@
+﻿@using BloodDonationApp.Models.Enums
+@model BloodDonationApp.Models.Donor
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div style="padding:80px">
+<div class="card-header bg-gradient mb-2">
+    <div class="row">
+        <div class="col-12 text-center">
+
+                <h2 style="color:brown">Edit Donor <img src="~/wave.png" width="200px; " style=" height:36px;object-fit:cover;" /></h2>
+        </div>
+    </div>
+</div>
+<hr />
+
+
+<form asp-action="Edit">
+    <div class="row g-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col">
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" placeholder="First Name" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" placeholder="Last Name" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label asp-for="AddressLine1" class="control-label"></label>
+            <input asp-for="AddressLine1" class="form-control" placeholder="Address Line 1" />
+            <span asp-validation-for="AddressLine1" class="text-danger"></span>
+
+        </div>
+
+
+        <div class="form-group">
+            <label asp-for="AddressLine2" class="control-label"></label>
+            <input asp-for="AddressLine2" class="form-control" placeholder="Address Line 2" />
+            <span asp-validation-for="AddressLine2" class="text-danger"></span>
+        </div>
+
+        <div class="col">
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" placeholder="City" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="form-group">
+                <label asp-for="State" class="control-label"></label>
+                <input asp-for="State" class="form-control" placeholder="State" />
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="form-group">
+                <label asp-for="ZipCode" class="control-label"></label>
+                <input asp-for="ZipCode" class="form-control" placeholder="Zip code" />
+                <span asp-validation-for="ZipCode" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div>
+        </div>
+
+        <div class="col">
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div></div>
+
+        <div class="col">
+            <div class="form-group">
+                <label asp-for="BloodGroup" class="control-label"></label>
+                @* <input asp-for="BloodGroup" class="form-control" /> *@
+                    <select asp-for="BloodGroup" asp-items="Html.GetEnumSelectList<BloodGroup>()" class="form-control">
+                        <option value="">-- Select Blood Group --</option>
+                    </select>
+                <span asp-validation-for="BloodGroup" class="text-danger"></span>
+            </div>
+        </div>
+
+
+        <div class="col">
+            <div class="form-group">
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                <input asp-for="DateOfBirth" class="form-control" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+        </div>
+
+
+        <div class="form-group mb-2 mt-3">
+            <label asp-for="EverDonatedBlood" class="control-label">Have you ever donated blood before?</label>
+            <div>
+                <input type="checkbox" asp-for="EverDonatedBlood" value="true" />
+                <label class="form-check-label">Yes</label>
+
+                    <input type="checkbox" asp-for="EverDonatedBlood" value="false" />
+                    <label class="form-check-label">No</label>
+            </div>
+            <div>
+             
+            </div>
+        </div>
+        </div>
+    <div class="form-group d-flex gap-2">
+        <input type="submit" value="Save" class="btn btn-success" style="width:90px" />
+            <a class="btn btn-secondary" asp-action="Index">
+                Back to List
+            </a>
+    </div>
+
+        </form>
+        </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
